@@ -81,6 +81,7 @@ def programme(user_choice)
     hashe = {} #Création d'un hashe vide
     error = 0
     count_chars = 0
+    count_handle = 0
     handle.each do |i| #boucle permettant de passer un à un mes handle à l'intérieur de celle-ci 
       i.delete!("@") #Méthode supprimant les @ 
       chars = i.split('') # Création d'une variable séparant les lettres une à une 
@@ -99,10 +100,12 @@ def programme(user_choice)
       puts "Voici les handles avec #{nbchars} caractères"
     hashe.each do |handle, length|
       if length == nbchars
+        count_handle = count_handle +=1 
         error = error += 1
         puts " #{handle}"
       end
     end
+    puts "Il y'a #{count_handle} handles ayant #{nbchars} caractères "
     if error == 0
       puts "Il n'y a pas de handle avec ce nombre de caractères"
     end
