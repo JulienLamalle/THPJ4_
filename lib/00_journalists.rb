@@ -47,9 +47,8 @@ def programme(user_choice)
   if user_choice == 4
     count_up = 0
     handle.each do |i|
-      i.delete!("@")
-      chars = i.split('')  #Découpe les tags en lettres
-      if chars[0] == chars[0].upcase #méthode pour vérifier que ma première lettre est en majuscule 
+      chars = i[1]
+      if /[[:upper:]]/.match(chars) #méthode pour vérifier que ma première lettre est en majuscule 
         count_up = count_up + 1 #Compteur qui s'incrémente de 1 dès que mon handle débute par une majuscule
       end
     end
@@ -79,7 +78,6 @@ def programme(user_choice)
 
   if user_choice == 8
     hashe = {} #Création d'un hashe vide
-    error = 0
     count_chars = 0
     count_handle = 0
     handle.each do |i| #boucle permettant de passer un à un mes handle à l'intérieur de celle-ci 
@@ -101,14 +99,10 @@ def programme(user_choice)
     hashe.each do |handle, length|
       if length == nbchars
         count_handle = count_handle +=1 
-        error = error += 1
         puts " #{handle}"
       end
     end
     puts "Il y'a #{count_handle} handles ayant #{nbchars} caractères "
-    if error == 0
-      puts "Il n'y a pas de handle avec ce nombre de caractères"
-    end
   end
 end
 
